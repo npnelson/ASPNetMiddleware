@@ -33,14 +33,14 @@ public sealed class RequireHttpsExceptForLocalhostMiddleware
 
 namespace Microsoft.AspNetCore.Builder
 {
-    public static class RequireHttpsExceptForLocalHostMiddlewareExtensions
+    public static class RequireHttpsExceptForLocalhostMiddlewareExtensions
     {
         /// <summary>
         /// This is useful in webapi scenarioes where you want to require https except for when testing on localhost
         /// </summary>
         /// <param name="builder"></param>
         /// <returns></returns>
-        public static IApplicationBuilder UseRequireHttpsExceptForLocalHostMiddleware(this IApplicationBuilder builder)
+        public static IApplicationBuilder UseRequireHttpsExceptForLocalhost(this IApplicationBuilder builder)
         {
             return builder.UseMiddleware<RequireHttpsExceptForLocalhostMiddleware>();
         }

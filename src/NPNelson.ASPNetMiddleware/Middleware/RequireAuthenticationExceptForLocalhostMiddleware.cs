@@ -47,7 +47,7 @@ namespace NPNelson.ASPNetMiddleware.Middleware
             /// </summary>
             /// <param name="builder"></param>
             /// <returns></returns>
-            public static IApplicationBuilder UseRequireAuthenticationExceptForLocalHostMiddleware(this IApplicationBuilder builder)
+            public static IApplicationBuilder UseRequireAuthenticationExceptForLocalhost(this IApplicationBuilder builder)
             {
                 return builder.UseMiddleware<RequireAuthenticationExceptForLocalHostMiddleware>();
             }
