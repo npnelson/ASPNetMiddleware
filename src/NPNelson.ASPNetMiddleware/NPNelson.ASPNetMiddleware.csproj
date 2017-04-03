@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Description>Includes middleware that:
+1) Requires https unless running on localhost
+2) Requires authentication unless running on localhost</Description>
   </PropertyGroup>
 
   <ItemGroup>

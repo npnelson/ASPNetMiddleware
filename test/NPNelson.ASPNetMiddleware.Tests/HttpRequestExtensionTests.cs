@@ -1,9 +1,7 @@
 ﻿using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
 using System.Net;
-using System.Text;
 using Xunit;
 
 namespace NPNelson.ASPNetMiddleware.Tests

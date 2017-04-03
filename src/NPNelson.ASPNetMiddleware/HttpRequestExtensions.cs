@@ -37,7 +37,6 @@ namespace Microsoft.AspNetCore.Http
             {
                 return true;
             }
-
             return false;
         }
     }

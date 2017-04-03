@@ -1,13 +1,9 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 public sealed class RequireHttpsExceptForLocalhostMiddleware
 {
-
     private readonly RequestDelegate _next;
     public RequireHttpsExceptForLocalhostMiddleware(RequestDelegate next)
     {
@@ -31,8 +27,7 @@ public sealed class RequireHttpsExceptForLocalhostMiddleware
                request.QueryString.ToUriComponent());
 
             context.Response.Redirect(newUrl);
-        }
-        
+        }        
     }
 }
 
@@ -41,13 +36,13 @@ namespace Microsoft.AspNetCore.Builder
     public static class RequireHttpsExceptForLocalHostMiddlewareExtensions
     {
         /// <summary>
-        /// This is useful in webapi scenarioes where you want to require authentication except for when testing on localhost
+        /// This is useful in webapi scenarioes where you want to require https except for when testing on localhost
         /// </summary>
         /// <param name="builder"></param>
         /// <returns></returns>
         public static IApplicationBuilder UseRequireHttpsExceptForLocalHostMiddleware(this IApplicationBuilder builder)
         {
-            return builder.UseMiddleware<RequireHttpsExceptForLocalHostMiddleware>();
+            return builder.UseMiddleware<RequireHttpsExceptForLocalhostMiddleware>();
         }
     }
 }

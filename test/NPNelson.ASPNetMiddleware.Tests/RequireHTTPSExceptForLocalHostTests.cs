@@ -1,9 +1,7 @@
 ﻿using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -29,8 +27,7 @@ namespace NPNelson.ASPNetMiddleware.Tests
             {
                 context.Request.Scheme = "https";
             }
-            //context.Request.Host = new Microsoft.AspNetCore.Http.HostString("localHOSt"); //give it a goofy capitalizatio to make sure it isn't case sensitive
-            //context.Request.Path = new Microsoft.AspNetCore.Http.PathString("/testpath");
+
             //just set up any kind of delegate to make sure our middleware executed it
 
             RequestDelegate next = x =>
@@ -39,7 +36,7 @@ namespace NPNelson.ASPNetMiddleware.Tests
                 return Task.FromResult<object>(null);
             };
 
-            var middleware = new RequireHttpsExceptForLocalHostMiddleware(next);
+            var middleware = new RequireHttpsExceptForLocalhostMiddleware(next);
 
             //Act
 
@@ -50,13 +47,13 @@ namespace NPNelson.ASPNetMiddleware.Tests
             if (shouldRedirect)
             {
                 context.Response.StatusCode.Should().Be((int)HttpStatusCode.Redirect, $"runningOnLocal={runningOnLocal} isHTTPS={isHTTPS}");
-                context.Response.Headers["Location"].Should().StartWith("https", $"runningOnLocal={runningOnLocal} isHTTPS={isHTTPS}");
+                context.Response.Headers["Location"][0].Should().StartWith("https", $"runningOnLocal={runningOnLocal} isHTTPS={isHTTPS}");
             }
             else
             {
                 context.Response.ContentType.Should().Be("application/xml", $"runningOnLocal={runningOnLocal} isHTTPS={isHTTPS}"); //make sure our delegate got called
             }
         }
-        
+
     }
 }
