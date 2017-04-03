@@ -20,6 +20,11 @@ namespace NPNelson.ASPNetMiddleware.Tests
             //Arrange
             var context = new DefaultHttpContext();
 
+            if (!runningOnLocal) //if we leave Remote and Local IP addresses null, it will assume it's running on localhost
+            {
+                context.Connection.RemoteIpAddress = IPAddress.Parse("192.168.1.1");
+            }
+
             if (authenticate)
             {
                 context.User = new System.Security.Claims.ClaimsPrincipal();
@@ -42,7 +47,7 @@ namespace NPNelson.ASPNetMiddleware.Tests
             //Assert
             if (shouldRequire)
             {
-                context.Response.StatusCode.Should().NotBe((int)HttpStatusCode.Unauthorized,$"RunningOnLocal={runningOnLocal} Authenticate={authenticate}");
+                context.Response.StatusCode.Should().Be((int)HttpStatusCode.Unauthorized,$"RunningOnLocal={runningOnLocal} Authenticate={authenticate}");
             }
             else
             {

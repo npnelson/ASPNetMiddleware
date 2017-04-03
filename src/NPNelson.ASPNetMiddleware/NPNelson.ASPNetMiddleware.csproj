@@ -6,7 +6,7 @@
     <Description>Includes middleware that:
 1) Requires https unless running on localhost
 2) Requires authentication unless running on localhost</Description>
-    <Version>1.0.01</Version>
+    <Version>1.0.2</Version>
     <PackageProjectUrl>https://github.com/npnelson/ASPNetMiddleware</PackageProjectUrl>
   </PropertyGroup>
 
