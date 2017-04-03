@@ -20,7 +20,7 @@ namespace NPNelson.ASPNetMiddleware.Tests
         [InlineData("192.168.1.1", "192.168.1.2", false)] //obviously not localhost
         [InlineData("192.168.1.1", "127.0.0.1", false)] //again, if remoteIP is not null and not localhost, it is not a localrequest
         [InlineData("127.0.0.1", "127.0.0.1", true)] //obviously a localrequest
-        public void LocalHostTest(string remoteIPAddress,string localIPAddress, bool isLocal)
+        public void LocalhostTest(string remoteIPAddress,string localIPAddress, bool isLocal)
         {
             var context = new DefaultHttpContext();
             context.Connection.RemoteIpAddress = GetIPAddressFromString(remoteIPAddress);
