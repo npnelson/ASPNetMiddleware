@@ -5,8 +5,9 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Description>Includes middleware that:
 1) Requires https unless running on localhost
-2) Requires authentication unless running on localhost</Description>
-    <Version>1.0.2</Version>
+2) Requires authentication unless running on localhost
+3) Requires authentication regardless of localhost</Description>
+    <Version>1.0.3</Version>
     <PackageProjectUrl>https://github.com/npnelson/ASPNetMiddleware</PackageProjectUrl>
   </PropertyGroup>
 
