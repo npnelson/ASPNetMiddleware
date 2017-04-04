@@ -7,7 +7,7 @@
 1) Requires https unless running on localhost
 2) Requires authentication unless running on localhost
 3) Requires authentication regardless of localhost</Description>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <PackageProjectUrl>https://github.com/npnelson/ASPNetMiddleware</PackageProjectUrl>
   </PropertyGroup>
 

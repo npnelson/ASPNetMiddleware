@@ -25,7 +25,7 @@ namespace NPNelson.ASPNetMiddleware.Middleware
 
             if (!anyAuthenticated)
             {
-                //we're not running on localhost and we don't have any authentication
+                //we don't have any authentication
                 context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
             }
             else
@@ -47,7 +47,7 @@ namespace Microsoft.AspNetCore.Builder
         /// <returns></returns>
         public static IApplicationBuilder UseRequireAuthentication(this IApplicationBuilder builder)
         {
-            return builder.UseMiddleware<RequireAuthenticationExceptForLocalHostMiddleware>();
+            return builder.UseMiddleware<RequireAuthenticationMiddleware>();
         }
     }
 }
