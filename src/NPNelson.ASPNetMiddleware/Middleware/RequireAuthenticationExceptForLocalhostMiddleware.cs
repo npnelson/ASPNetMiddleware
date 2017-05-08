@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using NPNelson.ASPNetMiddleware.Middleware;
 using System;
 using System.Linq;
 using System.Net;
@@ -36,21 +37,20 @@ namespace NPNelson.ASPNetMiddleware.Middleware
                 await _next(context);
             }
         }
-    }
-
-    namespace Microsoft.AspNetCore.Builder
+    }   
+}
+namespace Microsoft.AspNetCore.Builder
+{
+    public static class RequireAuthenticationExceptForLocalHostMiddlewareExtensions
     {
-        public static class RequireAuthenticationExceptForLocalHostMiddlewareExtensions
+        /// <summary>
+        /// This is useful in webapi scenarioes where you want to require authentication except for when testing on localhost
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseRequireAuthenticationExceptForLocalhost(this IApplicationBuilder builder)
         {
-            /// <summary>
-            /// This is useful in webapi scenarioes where you want to require authentication except for when testing on localhost
-            /// </summary>
-            /// <param name="builder"></param>
-            /// <returns></returns>
-            public static IApplicationBuilder UseRequireAuthenticationExceptForLocalhost(this IApplicationBuilder builder)
-            {
-                return builder.UseMiddleware<RequireAuthenticationExceptForLocalHostMiddleware>();
-            }
+            return builder.UseMiddleware<RequireAuthenticationExceptForLocalHostMiddleware>();
         }
     }
 }
